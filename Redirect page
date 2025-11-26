@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>18+ Age Verification - Classic Theme</title>
+<style>
+/* Body + Classic Dark Theme */
+body {
+  margin:0;
+  font-family: 'Georgia', serif;
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+  color:#fff;
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  text-align:center;
+  overflow:hidden;
+}
+
+/* Live Top Text */
+#liveText {
+  position: fixed;
+  top: 40px; /* toolbar compatible */
+  left: 0;
+  width: 100%;
+  background: rgba(34,34,34,0.95);
+  color: #ffcc00;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  z-index: 9999;
+  border-bottom: 1px solid #555;
+  font-size:16px;
+  text-shadow: 1px 1px 3px #000;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Main Box */
+.box {
+  background: rgba(0,0,0,0.85);
+  padding: 30px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 480px;
+  border: 1px solid #333;
+  margin-top: 90px;
+  box-shadow: 0 0 25px rgba(255,0,51,0.4);
+  backdrop-filter: blur(3px);
+}
+
+/* Countdown Timer */
+.timer {
+  font-size: 42px;
+  font-weight: bold;
+  margin: 15px 0;
+  color: #ff0033;
+  text-shadow: 2px 2px 8px #000;
+}
+
+/* Option Links */
+.option-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+.option-links a {
+  display: block;
+  padding: 14px;
+  background: #ff0033;
+  color: #fff;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 0 10px rgba(255,0,51,0.5);
+  transition: all 0.3s ease;
+}
+.option-links a:hover {
+  background: #ff3366;
+  transform: scale(1.05) rotate(-1deg);
+  box-shadow: 0 0 18px rgba(255,51,102,0.7);
+}
+
+/* Progress Bar */
+.progress-container {
+  width: 100%;
+  background: #111;
+  border-radius: 12px;
+  margin: 20px auto 0;
+  height: 12px;
+}
+.progress-bar {
+  width: 0%;
+  height: 12px;
+  background: #ff0033;
+  border-radius: 12px;
+  transition: width 0.1s linear;
+}
+
+/* Ad Gadget */
+#ad-gadget {
+  margin-top: 20px;
+  width: 100%;
+  height: 100px;
+  background: #111;
+  border-radius: 12px;
+  text-align: center;
+  line-height: 100px;
+  color: #aaa;
+  font-size: 14px;
+  box-shadow: inset 0 0 12px rgba(255,0,51,0.2);
+}
+
+/* Responsive */
+@media(max-width:600px){
+  .box { padding: 20px; margin-top: 80px;}
+  .timer { font-size: 32px;}
+  .option-links a { font-size: 14px; padding: 10px;}
+  #liveText { font-size: 14px; padding: 8px; top: 35px;}
+}
+</style>
+</head>
+<body>
+
+<!-- Live Top Text -->
+<div id="liveText">🔞 প্রাপ্তবয়স্কদের জন্য কনটেন্ট - নিরাপদভাবে ব্রাউজ করুন!</div>
+
+<!-- Main Box -->
+<div class="box">
+  <h2>🔞 18+ Age Verification</h2>
+  <p>এই সাইটে প্রাপ্তবয়স্ক কনটেন্ট রয়েছে। ৫ সেকেন্ড পরে স্বয়ংক্রিয়ভাবে মূল ব্লগে প্রবেশ করবেন।</p>
+
+  <!-- Countdown -->
+  <div class="timer" id="timer">5</div>
+
+  <!-- Progress Bar -->
+  <div class="progress-container">
+    <div id="progressBar" class="progress-bar"></div>
+  </div>
+
+  <!-- Option Links -->
+  <div class="option-links">
+    <a href="#" target="_blank">Option 1: বিস্তারিত তথ্য</a>
+    <a href="#" target="_blank">Option 2: বিশেষ অফার</a>
+    <a href="#" target="_blank">Option 3: আরও দেখুন</a>
+  </div>
+
+  <!-- Ad Gadget -->
+  <div id="ad-gadget">[এখানে Adsterra বা অন্য বিজ্ঞাপন কোড বসান]</div>
+</div>
+
+<script>
+// Countdown Timer
+let sec = 5;
+const timerEl = document.getElementById('timer');
+let interval = setInterval(()=>{
+  sec--;
+  timerEl.innerText = sec;
+  if(sec <= 0){
+    clearInterval(interval);
+    window.location.href = "index.html"; // Redirect to main page
+  }
+},1000);
+
+// Progress Bar
+let progress = 0;
+const progressBar = document.getElementById('progressBar');
+const total = 5;
+const progressInterval = setInterval(()=>{
+  progress += (100/total)/10;
+  if(progress>100) progress=100;
+  progressBar.style.width = progress + "%";
+},100);
+
+// Live Top Text Rotation
+const messages = [
+  "🔞 এই সাইট শুধুমাত্র প্রাপ্তবয়স্কদের জন্য।",
+  "দয়া করে নিরাপদভাবে ব্রাউজ করুন।",
+  "ব্যক্তিগত তথ্য শেয়ার করবেন না।",
+  "Enjoy Safe Browsing!"
+];
+let idx = 0;
+const liveEl = document.getElementById("liveText");
+setInterval(()=>{
+  idx = (idx + 1) % messages.length;
+  liveEl.innerText = messages[idx];
+},4000);
+</script>
+
+</body>
+</html>
